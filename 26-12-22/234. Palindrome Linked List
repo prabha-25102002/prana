@@ -1,0 +1,46 @@
+class Solution {
+boolean isPalindrome (ListNode head) {
+     ListNode slow = head;
+     ListNode fast = head;
+
+//using fast and slow pointers to find middle of the linked list
+    while(fast!=null && fast.next!=null){
+
+        fast = fast.next.next;
+        slow = slow.next;
+    }   
+    
+    ListNode rev_head = reverse(slow);
+// after finding mid we are reversing the List from middle to the end
+
+    ListNode curr = head;
+
+// now we are checking whether the first half and the reversed half is same or not
+
+// if same return true else fasle
+
+   while(curr!=null && rev_head != null){
+
+       if(curr.val!=rev_head.val){
+           return false;
+       }   
+       slow = slow.next;
+    }
+    ListNode rev_head = reverse(slow);
+
+// after finding mid we are reversing the List from middle to the end
+
+    ListNode curr = head;
+
+// now we are checking whether the first half and the reversed half is same or no // if sane return true else fasle
+
+    while(curr!=null && rev_head!=null){ 
+        if(curr.val!=rev_head.val){
+            return false;
+        }
+        curr = curr.next;
+        rev_head = rev_head.next;
+    }
+    return true;
+  }
+}
